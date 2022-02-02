@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
 export const MainLayout = styled.div`
-  margin: 0 135px;
+  padding: 0 135px;
+`;
+
+export const MainLayoutWithColor = styled.div`
+  padding: 0 135px;
+  background-color: #fff8f5;
 `;

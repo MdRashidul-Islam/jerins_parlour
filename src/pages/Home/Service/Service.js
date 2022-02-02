@@ -1,16 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import { MainLayout } from "../../../styles/Layouts";
 import faceTreatment from "../../../assets/Icon/Group 1372.png";
 import Button from "../../Shared/Button/Button";
 
 const Service = () => {
   return (
-    <MainLayout>
-      <ServiceStyled>
-        <h1>
+    <ServiceStyled>
+      <div className="service">
+        <h6>
           Our Awesome <span>Service</span>
-        </h1>
+        </h6>
         <div className="service_section">
           <div className="service_card">
             <div className="item">
@@ -23,6 +22,7 @@ const Service = () => {
               </p>
             </div>
           </div>
+
           <div className="service_card service_card-middle">
             <div className="item">
               <img src={faceTreatment} alt="" />
@@ -34,6 +34,7 @@ const Service = () => {
               </p>
             </div>
           </div>
+
           <div className="service_card">
             <div className="item">
               <img src={faceTreatment} alt="" />
@@ -49,25 +50,34 @@ const Service = () => {
         <div className="button">
           <Button title={"Explore more"}></Button>
         </div>
-      </ServiceStyled>
-    </MainLayout>
+      </div>
+    </ServiceStyled>
   );
 };
 
 const ServiceStyled = styled.div`
-  height: 90vh;
-  margin: 40px 0;
-  h1 {
-    font-size: 34px;
-    font-weight: 700;
-    line-height: 43px;
-    text-align: center;
-    letter-spacing: 0.396px;
-    color: #111430;
-    span {
-      color: #f63e7b;
+  .service {
+    height: 100%;
+    margin: 40px 0;
+    padding: 0 135px;
+
+    @media (max-width: 688px) {
+      padding: 0px;
+      width: 100%;
+    }
+    h6 {
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 43px;
+      text-align: center;
+      letter-spacing: 0.396px;
+      color: #111430;
+      span {
+        color: #f63e7b;
+      }
     }
   }
+
   .service_section {
     display: flex;
     justify-content: space-between;
@@ -129,6 +139,40 @@ const ServiceStyled = styled.div`
   .button {
     display: flex;
     justify-content: center;
+  }
+  //Responsive
+  @media (max-width: 688px) {
+    .service_section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+
+      position: relative;
+    }
+    h6 {
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 23px;
+      text-align: center;
+      letter-spacing: 0.396px;
+      color: #111430;
+      span {
+        color: #f63e7b;
+      }
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+
+      Button {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
   }
 `;
 

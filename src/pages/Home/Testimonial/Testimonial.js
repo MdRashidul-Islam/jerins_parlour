@@ -1,110 +1,154 @@
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import styled from "styled-components";
+import user from "../../../assets/Image/Ellipse 90.png";
 import user1 from "../../../assets/Image/Ellipse 91.png";
-
+import user2 from "../../../assets/Image/Ellipse 92.png";
+import rating from "../../../assets/Icon/Group 33040.png";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-// import "./styles.css";
-
 // import required modules
-import { Pagination, Navigation } from "swiper";
-import styled from "styled-components";
+import { Pagination } from "swiper";
 
 export default function Testimonial() {
   return (
     <>
-      <h1 style={{ textAlign: "center", marginTop: "30px" }}>Testimonial</h1>
+      <h1 style={{ textAlign: "center", marginTop: "40px" }}>Testimonial</h1>
       <TestimonialStyled>
         <Swiper
-          slidesPerView={3}
+          slidesPerView={1}
           spaceBetween={30}
-          slidesPerGroup={3}
-          loop={true}
-          loopFillGroupWithBlank={false}
+          loop={false}
+          loopFillGroupWithBlank={true}
           pagination={{
             clickable: true,
           }}
-          navigation={false}
-          modules={[Pagination, Navigation]}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 1,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 50,
+            },
+          }}
+          modules={[Pagination]}
           className="mySwiper"
         >
           <SwiperSlide>
             <div className="card">
-              <div className="user_info">
+              <div className="card_header">
                 <div className="image">
-                  <img src={user1} alt="" />
+                  <img src={user} alt="" />
                 </div>
-                <div className="name_profession">
-                  <h3>Rashidul islam</h3>
+                <div className="name_work">
+                  <h3>Rashidul Islam</h3>
                   <h4>Web developer</h4>
                 </div>
               </div>
-              <div className="user_details">
+              <div className="card_info">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
-                  consequatur deserunt ipsam pariatur vitae atque rerum?
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit,
+                  vero. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Odit, vero. Lorem ipsum dolor sit amet consectetur adipisicing
+                  elit. Odit, vero.
                 </p>
+              </div>
+              <div className="card_rating">
+                <img src={rating} alt="" />
+                <img src={rating} alt="" />
+                <img src={rating} alt="" />
+                <img src={rating} alt="" />
               </div>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="card">
-              <div className="user_info">
+              <div className="card_header">
                 <div className="image">
                   <img src={user1} alt="" />
                 </div>
-                <div className="name_profession">
-                  <h3>Rashidul islam</h3>
+                <div className="name_work">
+                  <h3>Rashidul Islam</h3>
                   <h4>Web developer</h4>
                 </div>
               </div>
-              <div className="user_details">
+              <div className="card_info">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
-                  consequatur deserunt ipsam pariatur vitae atque rerum?
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit,
+                  vero. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Odit, vero. Lorem ipsum dolor sit amet consectetur adipisicing
+                  elit. Odit, vero.
                 </p>
+              </div>
+              <div className="card_rating">
+                <img src={rating} alt="" />
+                <img src={rating} alt="" />
+                <img src={rating} alt="" />
+                <img src={rating} alt="" />
               </div>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="card">
-              <div className="user_info">
+              <div className="card_header">
                 <div className="image">
-                  <img src={user1} alt="" />
+                  <img src={user2} alt="" />
                 </div>
-                <div className="name_profession">
-                  <h3>Rashidul islam</h3>
+                <div className="name_work">
+                  <h3>Rashidul Islam</h3>
                   <h4>Web developer</h4>
                 </div>
               </div>
-              <div className="user_details">
+              <div className="card_info">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
-                  consequatur deserunt ipsam pariatur vitae atque rerum?
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit,
+                  vero. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Odit, vero. Lorem ipsum dolor sit amet consectetur adipisicing
+                  elit. Odit, vero.
                 </p>
+              </div>
+              <div className="card_rating">
+                <img src={rating} alt="" />
+                <img src={rating} alt="" />
+                <img src={rating} alt="" />
+                <img src={rating} alt="" />
               </div>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="card">
-              <div className="user_info">
+              <div className="card_header">
                 <div className="image">
-                  <img src={user1} alt="" />
+                  <img src={user} alt="" />
                 </div>
-                <div className="name_profession">
-                  <h3>Rashidul islam</h3>
+                <div className="name_work">
+                  <h3>Rashidul Islam</h3>
                   <h4>Web developer</h4>
                 </div>
               </div>
-              <div className="user_details">
+              <div className="card_info">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
-                  consequatur deserunt ipsam pariatur vitae atque rerum?
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit,
+                  vero. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Odit, vero. Lorem ipsum dolor sit amet consectetur adipisicing
+                  elit. Odit, vero.
                 </p>
+              </div>
+              <div className="card_rating">
+                <img src={rating} alt="" />
+                <img src={rating} alt="" />
+                <img src={rating} alt="" />
+                <img src={rating} alt="" />
               </div>
             </div>
           </SwiperSlide>
@@ -113,31 +157,47 @@ export default function Testimonial() {
     </>
   );
 }
-
 const TestimonialStyled = styled.div`
-  margin: 0 40px;
-  height: 80vh;
+  height: 70vh;
+  width: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
-  .card {
-    margin: 0 40px;
-    width: 300px;
-    height: 287px;
-    .user_info {
-      display: flex;
-
-      align-items: center;
-      .image {
-        width: 64px;
-        height: 64px;
+  @media (max-width: 688px) {
+    height: 40vh;
+  }
+  .mySwiper {
+    .card {
+      border: 1px solid lightgray;
+      border-radius: 5px;
+      height: 100%;
+      width: 220px;
+      margin-left: 100px;
+      padding: 20px;
+      @media (max-width: 688px) {
+        margin-left: 50px;
+        height: 100%;
+        width: 300px;
+      }
+      .card_header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
         img {
-          width: 100%;
-          margin-right: 40px;
+          width: 50px;
         }
       }
-    }
-    .user_details {
-      margin-top: 20px;
+      .card_info {
+        p {
+          text-align: justify;
+        }
+      }
+      .card_rating {
+        margin-top: 20px;
+        img {
+          width: 20px;
+        }
+      }
     }
   }
 `;

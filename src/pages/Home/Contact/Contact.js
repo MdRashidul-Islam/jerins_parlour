@@ -12,18 +12,25 @@ const Contact = () => {
             project, professionally.
           </h1>
           <form className="form">
-            <input type="text" placeholder="First Name" />
-            <input type="text" placeholder="Last Name" /> <br />
-            <input type="text" placeholder="Email Address" />
-            <input type="text" placeholder="Phone Number" />
+            <div className="input">
+              <input type="text" placeholder="First Name" />
+
+              <input type="text" placeholder="Last Name" />
+
+              <input type="text" placeholder="Email Address" />
+
+              <input type="text" placeholder="Phone Number" />
+            </div>
             <br />
-            <textarea
-              name=""
-              id=""
-              cols="30"
-              rows="10"
-              placeholder="Your Message"
-            ></textarea>
+            <div className="text_area">
+              <textarea
+                name=""
+                id=""
+                cols="30"
+                rows="10"
+                placeholder="Your Message"
+              ></textarea>
+            </div>
             <br />
             <div className="button">
               <Button type="submit" title={"Send Message"}></Button>
@@ -37,45 +44,61 @@ const Contact = () => {
 
 const ContactStyled = styled.div`
   background-color: #fff8f5;
-  margin-top: 10px;
-  height: 100vh;
   .contact_section {
-    height: 90vh;
+    width: 100%;
+    height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     .contact {
-      h1 {
-        font-size: 34px;
-        font-weight: 700;
-        text-align: center;
-        line-height: 43px;
-        letter-spacing: 0.4px;
-        color: #2d2d2d;
-        margin-bottom: 30px;
-      }
-      form {
-        ::placeholder {
-          font-size: 18px;
+      .form {
+        margin-top: 70px;
+
+        .input {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          justify-content: center;
+          align-items: center;
+          grid-gap: 10px;
+
+          @media (max-width: 688px) {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            justify-content: center;
+            align-items: center;
+            grid-row-gap: 10px;
+          }
+          input {
+            width: 300px;
+            height: 40px;
+            @media (max-width: 688px) {
+              width: 350px;
+              height: 60px;
+              margin-top: 10px;
+              border: 1px solid #acacac;
+              border-radius: 3px;
+            }
+          }
         }
-        input {
-          width: 368px;
-          height: 55px;
-          margin: 8px;
-          border: none;
-          border-radius: 5px;
-          padding: 0 5px;
+
+        .text_area {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          textarea {
+            width: 100%;
+            @media (max-width: 688px) {
+              border: 1px solid #acacac;
+            }
+          }
         }
-        textarea {
-          width: 750px;
-          border: none;
-          border-radius: 5px;
-          margin: 10px;
-          padding: 5px 5px;
-        }
+
         .button {
-          text-align: center;
-          margin-top: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
       }
     }

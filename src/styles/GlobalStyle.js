@@ -10,6 +10,7 @@ export const GlobalStyled = createGlobalStyle`
   list-style: none;
 }
 
+
 body{
   
 }

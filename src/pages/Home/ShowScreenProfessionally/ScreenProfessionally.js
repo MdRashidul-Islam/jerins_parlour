@@ -1,61 +1,61 @@
 import React from "react";
 import styled from "styled-components";
-import { MainLayout } from "../../../styles/Layouts";
+
 import img from "../../../assets/Image/engin-akyurt-g-m8EDc4X6Q-unsplash 1.png";
 
 const ScreenProfessionally = () => {
   return (
     <ScreenProfessionallyStyled>
-      <MainLayout>
-        <div className="Professionally_section">
-          <div className="image_section">
-            <img src={img} alt="" />
-          </div>
-          <div className="professionally_info">
-            <div>
-              <h1>
-                Let us handle your <br /> screen <span>Professionally</span>
-              </h1>
-              <p>
-                With well written codes, we build amazing apps for all
-                platforms, mobile and web apps in general ipsum.Lorem ipsum
-                dolor sit amet, consectetur adipiscing elit. Purus commodo
-                ipsum.
-              </p>
-              <div className="customer_service">
-                <div className="left">
-                  <div className="line-top">
-                    <h1>500+</h1>
-                  </div>
-                  <div className="line-bottom">
-                    <p>Happy Customer</p>
-                  </div>
+      <div className="Professionally_section">
+        <div className="image_section">
+          <img src={img} alt="" />
+        </div>
+        <div className="professionally_info">
+          <div>
+            <h1>
+              Let us handle your <br /> screen <span>Professionally</span>
+            </h1>
+            <p>
+              With well written codes, we build amazing apps for all platforms,
+              mobile and web apps in general ipsum.Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit. Purus commodo ipsum.
+            </p>
+            <div className="customer_service">
+              <div className="left">
+                <div className="line-top">
+                  <h1>500+</h1>
                 </div>
-                <div className="right">
-                  <div className="line-top">
-                    <h1>16+</h1>
-                  </div>
-                  <div className="line-bottom">
-                    <p>Total Service</p>
-                  </div>
+                <div className="line-bottom">
+                  <p>Happy Customer</p>
+                </div>
+              </div>
+              <div className="right">
+                <div className="line-top">
+                  <h1>16+</h1>
+                </div>
+                <div className="line-bottom">
+                  <p>Total Service</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </MainLayout>
+      </div>
     </ScreenProfessionallyStyled>
   );
 };
 
 const ScreenProfessionallyStyled = styled.div`
   background-color: #fff8f5;
+  padding: 20px 0;
   .Professionally_section {
     width: 100%;
-    height: 80vh;
+    height: 70vh;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 135px;
     .image_section {
       img {
         width: 580px;
@@ -108,6 +108,37 @@ const ScreenProfessionallyStyled = styled.div`
           font-size: 16px;
           line-height: 24px;
           letter-spacing: 0.005em;
+        }
+      }
+    }
+  }
+  //Responsive
+  @media (max-width: 700px) {
+    .Professionally_section {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      //image section start
+      .image_section {
+        img {
+          width: 370px;
+          height: 381px;
+          border-radius: 10px;
+        }
+      }
+      //image section end
+      .professionally_info {
+        width: 340px;
+        div {
+          width: 100%;
+          h1 {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 30px;
+          }
         }
       }
     }
