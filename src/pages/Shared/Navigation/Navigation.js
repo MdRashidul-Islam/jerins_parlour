@@ -20,6 +20,7 @@ const Navigation = () => {
           <Link to="/">Home</Link>
 
           <Link to="">Contact Us</Link>
+          <Link to="dashboard">Dashboard</Link>
           <Link to="/login">
             <Button title={"Login"}></Button>
           </Link>
@@ -61,7 +62,7 @@ const NavigationStyled = styled.nav`
       display: none;
     }
     .toggle {
-      color: crimson;
+      color: #f63e7b;
       display: none;
       margin-right: 0px;
     }
