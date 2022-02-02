@@ -9,7 +9,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 const Navigation = () => {
   return (
     <NavigationStyled>
-      <nav>
+      <nav className="nav">
         <div className="nav_logo">
           <Link to="/">
             <img src={logo} alt="" />
@@ -35,7 +35,6 @@ const Navigation = () => {
 const NavigationStyled = styled.nav`
   /* background-color: #fff8f5; */
   background-color: transparent;
-
   nav {
     height: 16vh;
     display: flex;
@@ -44,12 +43,16 @@ const NavigationStyled = styled.nav`
     justify-content: space-between;
     margin: 0 135px;
     top: 0;
-    z-index: 100;
 
+    @media (max-width: 688px) {
+      height: 70px;
+      margin: 0 10px;
+      z-index: 0px;
+    }
     .nav_logo {
       width: 100px;
       img {
-        width: 127, 45px;
+        width: 127;
         height: 48px;
         object-fit: contain;
       }
@@ -58,37 +61,14 @@ const NavigationStyled = styled.nav`
       display: none;
     }
     .toggle {
-      color: blue;
+      color: crimson;
       display: none;
-      margin-right: 20px;
+      margin-right: 0px;
     }
-    #toggle-menu:checked ~ .nav-item {
+    #toggle-menu:checked ~ .nav_item {
       transform: translateY(0px);
     }
-    @media (max-width: 644px) {
-      .toggle {
-        display: inline-block;
-      }
 
-      .nav_item {
-        position: absolute;
-        background: rgb(128, 128, 128);
-        width: 100%;
-        left: 0;
-        margin-top: 210px;
-        transform: translateY(-500px);
-        transition: 0.3s linear;
-      }
-      .nav_item a {
-        text-decoration: none;
-        display: block;
-        text-align: start;
-        font-size: 20px;
-        margin-left: 20px;
-        color: #fff;
-        padding: 8px;
-      }
-    }
     .nav_item {
       a {
         color: #474747;
@@ -100,6 +80,33 @@ const NavigationStyled = styled.nav`
       }
       a:not(:last-child) {
         margin-right: 40px;
+        @media (max-width: 688px) {
+          margin-right: 0px;
+        }
+      }
+    }
+    //responsive
+    @media (max-width: 688px) {
+      .toggle {
+        display: inline-block;
+      }
+      .nav_item {
+        position: absolute;
+        background: rgb(128, 128, 128);
+        width: 100%;
+        height: 150px;
+        left: 0;
+        margin-top: 200px;
+        transform: translateY(-500px);
+        transition: 0.3s linear;
+        a {
+          display: block;
+          text-align: center;
+          padding: 16px 0;
+          font-size: 18px;
+          color: white;
+          margin-left: 0px;
+        }
       }
     }
   }

@@ -7,7 +7,7 @@ const Contact = () => {
     <ContactStyled>
       <div className="contact_section">
         <div className="contact">
-          <h1>
+          <h1 style={{ textAlign: "center" }}>
             Let us handle your <br />
             project, professionally.
           </h1>
@@ -71,6 +71,9 @@ const ContactStyled = styled.div`
           input {
             width: 300px;
             height: 40px;
+            border: none;
+            border-radius: 5px;
+
             @media (max-width: 688px) {
               width: 350px;
               height: 60px;
@@ -78,6 +81,11 @@ const ContactStyled = styled.div`
               border: 1px solid #acacac;
               border-radius: 3px;
             }
+          }
+          input:focus {
+            border: 1px solid #f63e7b;
+            outline: none;
+            border-radius: 5px;
           }
         }
 
@@ -89,9 +97,16 @@ const ContactStyled = styled.div`
 
           textarea {
             width: 100%;
+            border: none;
+            border-radius: 5px;
             @media (max-width: 688px) {
               border: 1px solid #acacac;
             }
+          }
+          textarea:focus {
+            border: 1px solid #f63e7b;
+            outline: none;
+            border-radius: 5px;
           }
         }
 
