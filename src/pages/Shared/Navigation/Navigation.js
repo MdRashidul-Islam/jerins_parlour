@@ -64,7 +64,7 @@ const NavigationStyled = styled.nav`
     .toggle {
       color: #f63e7b;
       display: none;
-      margin-right: 0px;
+      margin-right: 10px;
     }
     #toggle-menu:checked ~ .nav_item {
       transform: translateY(0px);
@@ -95,9 +95,9 @@ const NavigationStyled = styled.nav`
         position: absolute;
         background: rgb(128, 128, 128);
         width: 100%;
-        height: 150px;
+        height: 190px;
         left: 0;
-        margin-top: 200px;
+        margin-top: 240px;
         transform: translateY(-500px);
         transition: 0.3s linear;
         a {

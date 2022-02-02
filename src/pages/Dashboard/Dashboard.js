@@ -200,7 +200,7 @@ const NavStyled = styled.div`
       padding-left: 60px;
       margin-top: 20px;
       @media (max-width: 688px) {
-        margin-left: 50px;
+        padding-left: 50px;
       }
       a {
         color: #878787;
