@@ -44,7 +44,7 @@ const HeaderStyled = styled.header`
     width: 100%;
   }
   .header {
-    height: 84vh;
+    height: 88vh;
     display: flex;
     justify-content: space-between;
     align-items: center;

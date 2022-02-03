@@ -9,16 +9,15 @@ import MakeAdmin from "./pages/Dashboard/MakeAdmin/MakeAdmin";
 import ManageService from "./pages/Dashboard/ManageService/ManageService";
 import OrderList from "./pages/Dashboard/OrderList/OrderList";
 import Review from "./pages/Dashboard/Review/Review";
-
+import Services from "./pages/Home/Service/Services";
 import Home from "./pages/Home/Home";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home />} />
         <Route path="home" element={<Home />} />
-
+        <Route path="services" element={<Services />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         {/* dashboard */}
@@ -31,6 +30,7 @@ function App() {
           <Route path="orderList" element={<OrderList />} />
           <Route path="review" element={<Review />} />
         </Route>
+        <Route path="/" element={<Home />} />
       </Routes>
     </div>
   );

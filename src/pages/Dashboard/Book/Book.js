@@ -38,6 +38,9 @@ const BookStyled = styled.div`
     width: 400px;
 
     padding: 5px;
+    @media (max-width: 688px) {
+      width: 100%;
+    }
     .input {
       height: 40px;
       width: 100%;

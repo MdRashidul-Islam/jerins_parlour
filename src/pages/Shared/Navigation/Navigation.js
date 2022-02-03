@@ -17,10 +17,9 @@ const Navigation = () => {
         </div>
         <input type="checkbox" id="toggle-menu" />
         <div className="nav_item">
-          <Link to="/">Home</Link>
-
+          <Link to="/home">Home</Link>
           <Link to="">Contact Us</Link>
-          <Link to="dashboard">Dashboard</Link>
+          <Link to="/dashboard">Dashboard</Link>
           <Link to="/login">
             <Button title={"Login"}></Button>
           </Link>
@@ -37,7 +36,7 @@ const NavigationStyled = styled.nav`
   /* background-color: #fff8f5; */
   background-color: transparent;
   nav {
-    height: 16vh;
+    height: 12vh;
     display: flex;
     position: sticky;
     align-items: center;
@@ -95,11 +94,12 @@ const NavigationStyled = styled.nav`
         position: absolute;
         background: rgb(128, 128, 128);
         width: 100%;
-        height: 190px;
+        height: 25vh;
+        margin-top: 280px;
         left: 0;
-        margin-top: 240px;
         transform: translateY(-500px);
         transition: 0.3s linear;
+        padding-top: 30px;
         a {
           display: block;
           text-align: center;

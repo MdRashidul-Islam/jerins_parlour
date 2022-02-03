@@ -62,6 +62,76 @@ const BookingList = () => {
             </p>
           </div>
         </div>
+        <div className="card">
+          <div className="card_header">
+            <img src={pic} alt="" />
+            <button>Pending</button>
+          </div>
+          <div className="card_info">
+            <h3>Anti Age Face Treatment</h3>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci
+              consequuntur, distinctio nostrum repellat porro repellendus
+              dignissimos libero sapiente. Possimus quae.
+            </p>
+          </div>
+        </div>
+        <div className="card">
+          <div className="card_header">
+            <img src={pic} alt="" />
+            <button>Pending</button>
+          </div>
+          <div className="card_info">
+            <h3>Anti Age Face Treatment</h3>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci
+              consequuntur, distinctio nostrum repellat porro repellendus
+              dignissimos libero sapiente. Possimus quae.
+            </p>
+          </div>
+        </div>
+        <div className="card">
+          <div className="card_header">
+            <img src={pic} alt="" />
+            <button>Pending</button>
+          </div>
+          <div className="card_info">
+            <h3>Anti Age Face Treatment</h3>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci
+              consequuntur, distinctio nostrum repellat porro repellendus
+              dignissimos libero sapiente. Possimus quae.
+            </p>
+          </div>
+        </div>
+        <div className="card">
+          <div className="card_header">
+            <img src={pic} alt="" />
+            <button>Pending</button>
+          </div>
+          <div className="card_info">
+            <h3>Anti Age Face Treatment</h3>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci
+              consequuntur, distinctio nostrum repellat porro repellendus
+              dignissimos libero sapiente. Possimus quae.
+            </p>
+          </div>
+        </div>
+        <div className="card">
+          <div className="card_header">
+            <img src={pic} alt="" />
+            <button>Pending</button>
+          </div>
+          <div className="card_info">
+            <h3>Anti Age Face Treatment</h3>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci
+              consequuntur, distinctio nostrum repellat porro repellendus
+              dignissimos libero sapiente. Possimus quae.
+            </p>
+          </div>
+        </div>
       </div>
     </BookingListStyled>
   );
@@ -69,19 +139,20 @@ const BookingList = () => {
 
 const BookingListStyled = styled.div`
   .card_section {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: space-around;
-    grid-row-gap: 10px;
+    display: flex;
 
+    justify-content: flex-start;
+    flex-wrap: wrap;
     .card {
+      flex-basis: 354px;
       width: 300px;
       height: 100%;
       border: none;
       padding: 10px;
       background-color: white;
       border-radius: 5px;
-
+      margin-bottom: 10px;
+      margin-right: 10px;
       .card_header {
         display: flex;
         align-items: center;
