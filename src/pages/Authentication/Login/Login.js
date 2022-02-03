@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../Shared/Button/Button";
 import Navigation from "../../Shared/Navigation/Navigation";
 import google from "../../../assets/Icon/Group 573.png";
-import facebook from "../../../assets/images/Icon/facebook.png";
+import facebook from "../../../assets/Icon/facebook.png";
 
 const Login = () => {
+  const [loginData, setLoginData]=useState({});
+  const [email, setEmail]=useState({});
+  const [password, setPassword]=useState({});
+  const handleOnBlur = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const newLoginData={...loginData};
+    newLoginData[field]=value;
+    setLoginData(newLoginData);
+    console.log(field, value);
+  };
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <LoginStyled>
       <Navigation />
@@ -14,9 +29,19 @@ const Login = () => {
         <div>
           <div className="register">
             <h2>Login</h2>
-            <form className="form">
-              <input type="email" placeholder="Email" />
-              <input type="password" placeholder="Password" />
+            <form className="form" onSubmit={handleLoginSubmit}>
+              <input
+                name="email"
+                onBlur={handleOnBlur}
+                type="email"
+                placeholder="Email"
+              />
+              <input
+                name="password"
+                onBlur={handleOnBlur}
+                type="password"
+                placeholder="Password"
+              />
               <div>
                 <Button type="submit" title={"Create an account"}></Button>
               </div>

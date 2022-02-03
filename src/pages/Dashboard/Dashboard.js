@@ -44,37 +44,57 @@ function Dashboard(props) {
         </Link>
 
         {/* all link */}
-        <div className="nav_item">
-          <FontAwesomeIcon icon={faShoppingCart} />
-          <Link to="book">Book</Link>
-        </div>
-        <div className="nav_item">
-          <FontAwesomeIcon icon={faShoppingBasket} />
-          <Link to="bookingList">Booking List</Link>
-        </div>
-        <div className="nav_item">
-          <FontAwesomeIcon icon={faCommentDots} />
-          <Link to="review">Review</Link>
-        </div>
+        <Link to="book">
+          <div className="nav_item">
+            <FontAwesomeIcon className="icon" icon={faShoppingCart} />
+            <Link to="book">Book</Link>
+          </div>
+        </Link>
+
+        <Link to="bookingList">
+          <div className="nav_item">
+            <FontAwesomeIcon className="icon" icon={faShoppingBasket} />
+            <Link to="bookingList">Booking List</Link>
+          </div>
+        </Link>
+
+        <Link to="review">
+          <div className="nav_item">
+            <FontAwesomeIcon className="icon" icon={faCommentDots} />
+            <Link to="review">Review</Link>
+          </div>
+        </Link>
 
         {/* Admin Route */}
 
-        <div className="nav_item">
-          <FontAwesomeIcon icon={faListOl} />
-          <Link to="orderList">Order List</Link>
-        </div>
-        <div className="nav_item">
-          <FontAwesomeIcon icon={faPlus} />
-          <Link to="addService">Add Service</Link>
-        </div>
-        <div className="nav_item">
-          <FontAwesomeIcon icon={faUserShield} />
-          <Link to="makeAdmin">Make Admin</Link>
-        </div>
-        <div className="nav_item">
-          <FontAwesomeIcon icon={faTasks} />
-          <Link to="manageService">Manage Service</Link>
-        </div>
+        <Link to="orderList">
+          <div className="nav_item">
+            <FontAwesomeIcon className="icon" icon={faListOl} />
+            <Link to="orderList">Order List</Link>
+          </div>
+        </Link>
+
+        <Link to="addService">
+          <div className="nav_item">
+            <FontAwesomeIcon className="icon" icon={faPlus} />
+            <Link to="addService">Add Service</Link>
+          </div>
+        </Link>
+
+        <Link to="makeAdmin">
+          {" "}
+          <div className="nav_item">
+            <FontAwesomeIcon className="icon" icon={faUserShield} />
+            <Link to="makeAdmin">Make Admin</Link>
+          </div>
+        </Link>
+
+        <Link to="manageService">
+          <div className="nav_item">
+            <FontAwesomeIcon className="icon" icon={faTasks} />
+            <Link to="manageService">Manage Service</Link>
+          </div>
+        </Link>
       </div>
     </NavStyled>
   );
@@ -205,6 +225,9 @@ const NavStyled = styled.div`
       a {
         color: #878787;
         margin-left: 20px;
+      }
+      .icon {
+        color: #f76c9a;
       }
     }
   }

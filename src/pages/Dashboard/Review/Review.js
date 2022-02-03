@@ -29,7 +29,9 @@ const ReviewStyled = styled.div`
   .review_section {
     .form {
       width: 350px;
-
+      @media (max-width: 688px) {
+        width: 100%;
+      }
       input {
         display: block;
         width: 100%;

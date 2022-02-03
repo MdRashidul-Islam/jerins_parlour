@@ -140,9 +140,11 @@ const BookingList = () => {
 const BookingListStyled = styled.div`
   .card_section {
     display: flex;
-
     justify-content: flex-start;
     flex-wrap: wrap;
+    @media (max-width: 688px) {
+      justify-content: center;
+    }
     .card {
       flex-basis: 354px;
       width: 300px;
@@ -153,6 +155,10 @@ const BookingListStyled = styled.div`
       border-radius: 5px;
       margin-bottom: 10px;
       margin-right: 10px;
+      @media (max-width: 688px) {
+        width: 100%;
+        margin-right: 0px;
+      }
       .card_header {
         display: flex;
         align-items: center;

@@ -5,8 +5,10 @@ import logo from "../../../assets/Group 33092.png";
 import Button from "../Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import useAuth from "../../../hooks/useAuth";
 
 const Navigation = () => {
+  const { user, logOut } = useAuth();
   return (
     <NavigationStyled>
       <nav className="nav">
@@ -20,9 +22,15 @@ const Navigation = () => {
           <Link to="/home">Home</Link>
           <Link to="">Contact Us</Link>
           <Link to="/dashboard">Dashboard</Link>
-          <Link to="/login">
-            <Button title={"Login"}></Button>
-          </Link>
+          {user.email ? (
+            <Link to="/">
+              <Button onClick={logOut} title={"Log out"}></Button>
+            </Link>
+          ) : (
+            <Link to="/login">
+              <Button title={"Login"}></Button>
+            </Link>
+          )}
         </div>
         <label htmlFor="toggle-menu" className="toggle">
           <FontAwesomeIcon icon={faBars} />

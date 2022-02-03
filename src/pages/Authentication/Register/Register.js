@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../Shared/Button/Button";
 import Navigation from "../../Shared/Navigation/Navigation";
 import google from "../../../assets/Icon/Group 573.png";
-import facebook from "../../../assets/images/Icon/facebook.png";
+import facebook from "../../../assets/Icon/facebook.png";
+import useAuth from "../../../hooks/useAuth";
 
 const Register = () => {
+  const { registerUser } = useAuth();
+
+  const [loginData, setLoginData] = useState({});
+
+  const handleOnBlur = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const newLoginData = { ...loginData };
+    newLoginData[field] = value;
+    setLoginData(newLoginData);
+  };
+
+  const handleRegister = (e) => {
+    if (loginData.password1 !== loginData.password2) {
+      alert("Password not match");
+      return;
+    }
+    registerUser(loginData.email, loginData.password1);
+    e.preventDefault();
+  };
   return (
     <RegisterStyled>
       <Navigation />
@@ -14,12 +35,37 @@ const Register = () => {
         <div>
           <div className="register">
             <h2>Create an account</h2>
-            <form className="form">
-              <input type="text" placeholder="First Name" />
-              <input type="text" placeholder="Last Name" />
-              <input type="email" placeholder="Email" />
-              <input type="password" placeholder="Password" />
-              <input type="password" placeholder="Confirm Password" />
+            <form onSubmit={handleRegister} className="form">
+              <input
+                onBlur={handleOnBlur}
+                name="firstName"
+                type="text"
+                placeholder="First Name"
+              />
+              <input
+                onBlur={handleOnBlur}
+                name="lastName"
+                type="text"
+                placeholder="Last Name"
+              />
+              <input
+                onBlur={handleOnBlur}
+                name="email"
+                type="email"
+                placeholder="Email"
+              />
+              <input
+                onBlur={handleOnBlur}
+                name="password1"
+                type="password"
+                placeholder="Password"
+              />
+              <input
+                onBlur={handleOnBlur}
+                name="password2"
+                type="password"
+                placeholder="Confirm Password"
+              />
               <div>
                 <Button type="submit" title={"Create an account"}></Button>
               </div>
