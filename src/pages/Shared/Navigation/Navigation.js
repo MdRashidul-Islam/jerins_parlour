@@ -22,9 +22,10 @@ const Navigation = () => {
           <Link to="/home">Home</Link>
           <Link to="">Contact Us</Link>
           <Link to="/dashboard">Dashboard</Link>
-          {user.email ? (
-            <Link to="/">
-              <Button onClick={logOut} title={"Log out"}></Button>
+          <Link to="/">{user.email}</Link>
+          {user?.email ? (
+            <Link onClick={logOut} to="/">
+              <Button title={"Log out"}></Button>
             </Link>
           ) : (
             <Link to="/login">
@@ -44,7 +45,7 @@ const NavigationStyled = styled.nav`
   /* background-color: #fff8f5; */
   background-color: transparent;
   nav {
-    height: 12vh;
+    height: 80px;
     display: flex;
     position: sticky;
     align-items: center;

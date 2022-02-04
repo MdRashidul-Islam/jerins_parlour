@@ -50,7 +50,7 @@ const ScreenProfessionallyStyled = styled.div`
   padding: 20px 0;
   .Professionally_section {
     width: 100%;
-    height: 70vh;
+    height: 500px;
 
     display: flex;
     justify-content: space-between;

@@ -93,7 +93,7 @@ const Register = () => {
 const RegisterStyled = styled.div`
   .register_section {
     width: 100%;
-    height: 70vh;
+    height: 520px;
     display: flex;
     justify-content: center;
     align-items: center;

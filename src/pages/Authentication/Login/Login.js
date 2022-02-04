@@ -7,14 +7,14 @@ import google from "../../../assets/Icon/Group 573.png";
 import facebook from "../../../assets/Icon/facebook.png";
 
 const Login = () => {
-  const [loginData, setLoginData]=useState({});
-  const [email, setEmail]=useState({});
-  const [password, setPassword]=useState({});
+  const [loginData, setLoginData] = useState({});
+  const [email, setEmail] = useState({});
+  const [password, setPassword] = useState({});
   const handleOnBlur = (e) => {
     const field = e.target.name;
     const value = e.target.value;
-    const newLoginData={...loginData};
-    newLoginData[field]=value;
+    const newLoginData = { ...loginData };
+    newLoginData[field] = value;
     setLoginData(newLoginData);
     console.log(field, value);
   };
@@ -25,42 +25,44 @@ const Login = () => {
   return (
     <LoginStyled>
       <Navigation />
-      <div className="register_section">
-        <div>
-          <div className="register">
-            <h2>Login</h2>
-            <form className="form" onSubmit={handleLoginSubmit}>
-              <input
-                name="email"
-                onBlur={handleOnBlur}
-                type="email"
-                placeholder="Email"
-              />
-              <input
-                name="password"
-                onBlur={handleOnBlur}
-                type="password"
-                placeholder="Password"
-              />
-              <div>
-                <Button type="submit" title={"Create an account"}></Button>
-              </div>
-            </form>
-            <p>
-              Don't have an account?{" "}
-              <Link to="/register">Create an account</Link>
-            </p>
-          </div>
-          <p style={{ textAlign: "center", margin: "10px" }}>OR</p>
-          <div className="google_facebook">
-            <button>
-              <img src={facebook} alt="" />
-              Continue with Facebook
-            </button>
-            <button>
-              {" "}
-              <img src={google} alt="" /> Continue with Google
-            </button>
+      <div>
+        <div className="register_section">
+          <div>
+            <div className="register">
+              <h2>Login</h2>
+              <form className="form" onSubmit={handleLoginSubmit}>
+                <input
+                  name="email"
+                  onBlur={handleOnBlur}
+                  type="email"
+                  placeholder="Email"
+                />
+                <input
+                  name="password"
+                  onBlur={handleOnBlur}
+                  type="password"
+                  placeholder="Password"
+                />
+                <div>
+                  <Button type="submit" title={"Create an account"}></Button>
+                </div>
+              </form>
+              <p>
+                Don't have an account?{" "}
+                <Link to="/register">Create an account</Link>
+              </p>
+            </div>
+            <p style={{ textAlign: "center", margin: "10px" }}>OR</p>
+            <div className="google_facebook">
+              <button>
+                <img src={facebook} alt="" />
+                Continue with Facebook
+              </button>
+              <button>
+                {" "}
+                <img src={google} alt="" /> Continue with Google
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -70,8 +72,7 @@ const Login = () => {
 
 const LoginStyled = styled.div`
   .register_section {
-    width: 100%;
-    height: 70vh;
+    min-height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;

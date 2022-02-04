@@ -51,7 +51,7 @@ export default function Testimonial() {
                   <img src={user} alt="" />
                 </div>
                 <div className="name_work">
-                  <h3>Rashidul Islam</h3>
+                  <h5>Rashidul Islam</h5>
                   <h4>Web developer</h4>
                 </div>
               </div>
@@ -158,7 +158,7 @@ export default function Testimonial() {
   );
 }
 const TestimonialStyled = styled.div`
-  height: 70vh;
+  height: 500px;
   width: 100%;
   display: flex;
   justify-content: center;
