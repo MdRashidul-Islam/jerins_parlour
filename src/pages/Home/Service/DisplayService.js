@@ -60,7 +60,6 @@ const DisplayService = () => {
 
 const ServiceStyled = styled.div`
   .service {
-    height: 100%;
     margin: 40px 0;
     padding: 0 135px;
 
@@ -83,7 +82,7 @@ const ServiceStyled = styled.div`
 
   .service_section {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     margin: 40px 0;
     .service_card {
@@ -146,7 +145,7 @@ const ServiceStyled = styled.div`
   //Responsive
   @media (max-width: 688px) {
     .service_section {
-      height: 100vh;
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;

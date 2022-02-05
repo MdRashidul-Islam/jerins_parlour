@@ -43,6 +43,10 @@ const Contact = () => {
 };
 
 const ContactStyled = styled.div`
+  @media (max-width: 688px) {
+    height: 100%;
+    padding: 100px 0px;
+  }
   background-color: #fff8f5;
   .contact_section {
     width: 100%;
@@ -50,6 +54,7 @@ const ContactStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
     .contact {
       .form {
         margin-top: 70px;
@@ -73,9 +78,10 @@ const ContactStyled = styled.div`
             height: 40px;
             border: none;
             border-radius: 5px;
+            padding: 5px;
 
             @media (max-width: 688px) {
-              width: 350px;
+              width: 100%;
               height: 60px;
               margin-top: 10px;
               border: 1px solid #acacac;

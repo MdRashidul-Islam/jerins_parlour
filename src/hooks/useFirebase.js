@@ -11,12 +11,14 @@ import {
 
 initAuth();
 const useFirebase = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState({});
 
   const auth = getAuth();
 
   //----------------register user start------------------//
   const registerUser = (email, password) => {
+    setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         const user = result.user;
@@ -25,12 +27,14 @@ const useFirebase = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
   //---------register User end-----------------//
 
   //-------------login with email password start--------------//
   const signWithEmail = (email, password) => {
+    setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((res) => {
         const user = res.user;
@@ -39,7 +43,8 @@ const useFirebase = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
   //-------------login with email password end--------------//
 
@@ -47,7 +52,8 @@ const useFirebase = () => {
   const logOut = () => {
     signOut(auth)
       .then(() => {})
-      .catch((error) => {});
+      .catch((error) => {})
+      .finally(() => setIsLoading(false));
   };
   //-----------------sign out end------------------//
 
@@ -60,12 +66,14 @@ const useFirebase = () => {
       } else {
         setUser({});
       }
+      setIsLoading(false);
     });
     return () => unSubscribe;
   }, []);
   //---------------Auth state start---------------//
 
   return {
+    isLoading,
     user,
     registerUser,
     logOut,

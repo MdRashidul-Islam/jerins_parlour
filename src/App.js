@@ -12,6 +12,7 @@ import Review from "./pages/Dashboard/Review/Review";
 import Services from "./pages/Home/Service/Services";
 import Home from "./pages/Home/Home";
 import AuthProvider from "./contexts/AuthProvider/AuthProvider";
+import ServiceDetails from "./pages/Home/Service/ServiceDetails";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="home" element={<Home />} />
           <Route path="services" element={<Services />} />
+          <Route path="serviceDetails/:_id" element={<ServiceDetails />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           {/* dashboard */}

@@ -22,10 +22,20 @@ const Navigation = () => {
           <Link to="/home">Home</Link>
           <Link to="">Contact Us</Link>
           <Link to="/dashboard">Dashboard</Link>
-          <Link to="/">{user.email}</Link>
+          {user.email ? (
+            <Link to="/" style={{ padding: "0px", color: "#F63E7B" }}>
+              {user.email}
+            </Link>
+          ) : (
+            <Link to="/">
+              <small style={{ padding: "10px", color: "#F63E7B" }}>
+                Hello, Guest
+              </small>
+            </Link>
+          )}
           {user?.email ? (
             <Link onClick={logOut} to="/">
-              <Button title={"Log out"}></Button>
+              <Button title={`Log out`}></Button>
             </Link>
           ) : (
             <Link to="/login">
@@ -45,19 +55,19 @@ const NavigationStyled = styled.nav`
   /* background-color: #fff8f5; */
   background-color: transparent;
   nav {
-    height: 80px;
+    height: 90px;
     display: flex;
     position: sticky;
     align-items: center;
     justify-content: space-between;
     margin: 0 135px;
-    top: 0;
 
     @media (max-width: 688px) {
       height: 70px;
       margin: 0 10px;
       z-index: 0px;
     }
+
     .nav_logo {
       width: 100px;
       img {
@@ -103,8 +113,8 @@ const NavigationStyled = styled.nav`
         position: absolute;
         background: rgb(128, 128, 128);
         width: 100%;
-        height: 25vh;
-        margin-top: 280px;
+        height: 220px;
+        margin-top: 260px;
         left: 0;
         transform: translateY(-500px);
         transition: 0.3s linear;
@@ -112,7 +122,7 @@ const NavigationStyled = styled.nav`
         a {
           display: block;
           text-align: center;
-          padding: 16px 0;
+          padding: 14px 0;
           font-size: 18px;
           color: white;
           margin-left: 0px;

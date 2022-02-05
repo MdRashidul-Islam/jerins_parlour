@@ -17,7 +17,8 @@ import { Pagination } from "swiper";
 export default function Testimonial() {
   return (
     <>
-      <h1 style={{ textAlign: "center", marginTop: "40px" }}>Testimonial</h1>
+      <h1 style={{ textAlign: "center", marginTop: "20px" }}>Testimonial</h1>
+
       <TestimonialStyled>
         <Swiper
           slidesPerView={1}
@@ -165,19 +166,20 @@ const TestimonialStyled = styled.div`
   align-items: center;
   @media (max-width: 688px) {
     height: 40vh;
+    padding: 200px 10px;
   }
   .mySwiper {
     .card {
       border: 1px solid lightgray;
       border-radius: 5px;
       height: 100%;
-      width: 220px;
-      margin-left: 100px;
+      width: 320px;
+      margin-left: 50px;
       padding: 20px;
       @media (max-width: 688px) {
-        margin-left: 50px;
+        margin-left: 0px;
         height: 100%;
-        width: 300px;
+        width: 100%;
       }
       .card_header {
         display: flex;

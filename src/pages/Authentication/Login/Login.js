@@ -5,11 +5,13 @@ import Button from "../../Shared/Button/Button";
 import Navigation from "../../Shared/Navigation/Navigation";
 import google from "../../../assets/Icon/Group 573.png";
 import facebook from "../../../assets/Icon/facebook.png";
+import useAuth from "../../../hooks/useAuth";
 
 const Login = () => {
+  const { signWithEmail } = useAuth();
+
   const [loginData, setLoginData] = useState({});
-  const [email, setEmail] = useState({});
-  const [password, setPassword] = useState({});
+
   const handleOnBlur = (e) => {
     const field = e.target.name;
     const value = e.target.value;
@@ -20,6 +22,8 @@ const Login = () => {
   };
 
   const handleLoginSubmit = (e) => {
+    signWithEmail(loginData.email, loginData.password);
+
     e.preventDefault();
   };
   return (
@@ -44,7 +48,11 @@ const Login = () => {
                   placeholder="Password"
                 />
                 <div>
-                  <Button type="submit" title={"Create an account"}></Button>
+                  <Button
+                    onClick={signWithEmail}
+                    type="submit"
+                    title={"Login"}
+                  ></Button>
                 </div>
               </form>
               <p>

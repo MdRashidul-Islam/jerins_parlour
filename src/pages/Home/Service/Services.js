@@ -3,11 +3,12 @@ import styled from "styled-components";
 import Service from "./Service";
 import logo from "../../../assets/Group 33092.png";
 import { Link } from "react-router-dom";
+import Spinner from "../../../styles/Spinner";
 
 const Services = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("/services.json")
+    fetch("http://localhost:5000/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
@@ -18,10 +19,16 @@ const Services = () => {
           <img src={logo} alt="" />
         </div>
       </Link>
-      <div className="services">
-        {services.map((service) => (
-          <Service service={service} key={service.id}></Service>
-        ))}
+      <div>
+        {services.length ? (
+          <div className="services">
+            {services.map((service) => (
+              <Service service={service} key={service._id}></Service>
+            ))}
+          </div>
+        ) : (
+          <Spinner />
+        )}
       </div>
     </ServicesStyled>
   );

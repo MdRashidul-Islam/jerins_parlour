@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Button from "../../Shared/Button/Button";
 
 const Service = ({ service }) => {
-  const { img, title, price, description } = service;
+  const { _id, img, title, price, description } = service;
   console.log(service);
   return (
     <ServiceStyled>
@@ -14,7 +14,7 @@ const Service = ({ service }) => {
           <h5>{title}</h5>
           <h6>${price}</h6>
           <p>{description}</p>
-          <Link to="services">
+          <Link to={`/serviceDetails/${_id}`}>
             <div className="button">
               <Button title={"Book Now"}></Button>
             </div>

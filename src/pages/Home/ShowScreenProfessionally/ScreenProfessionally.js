@@ -90,7 +90,7 @@ const ScreenProfessionallyStyled = styled.div`
       }
     }
     .customer_service {
-      width: 60%;
+      width: 70%;
       display: flex;
       justify-content: space-between;
       .line-top {

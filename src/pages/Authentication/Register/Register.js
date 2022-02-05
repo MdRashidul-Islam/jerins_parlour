@@ -6,10 +6,10 @@ import Navigation from "../../Shared/Navigation/Navigation";
 import google from "../../../assets/Icon/Group 573.png";
 import facebook from "../../../assets/Icon/facebook.png";
 import useAuth from "../../../hooks/useAuth";
+import Spinner from "../../../styles/Spinner";
 
 const Register = () => {
-  const { registerUser } = useAuth();
-
+  const { registerUser, isLoading } = useAuth();
   const [loginData, setLoginData] = useState({});
 
   const handleOnBlur = (e) => {
@@ -32,59 +32,66 @@ const Register = () => {
     <RegisterStyled>
       <Navigation />
       <div className="register_section">
-        <div>
-          <div className="register">
-            <h2>Create an account</h2>
-            <form onSubmit={handleRegister} className="form">
-              <input
-                onBlur={handleOnBlur}
-                name="firstName"
-                type="text"
-                placeholder="First Name"
-              />
-              <input
-                onBlur={handleOnBlur}
-                name="lastName"
-                type="text"
-                placeholder="Last Name"
-              />
-              <input
-                onBlur={handleOnBlur}
-                name="email"
-                type="email"
-                placeholder="Email"
-              />
-              <input
-                onBlur={handleOnBlur}
-                name="password1"
-                type="password"
-                placeholder="Password"
-              />
-              <input
-                onBlur={handleOnBlur}
-                name="password2"
-                type="password"
-                placeholder="Confirm Password"
-              />
-              <div>
-                <Button type="submit" title={"Create an account"}></Button>
-              </div>
-            </form>
-            <p>
-              Already have an account? <Link to="/login">Login</Link>{" "}
-            </p>
+        {!isLoading && (
+          <div>
+            <div className="register">
+              <h2>Create an account</h2>
+              <form onSubmit={handleRegister} className="form">
+                <input
+                  onBlur={handleOnBlur}
+                  name="firstName"
+                  type="text"
+                  placeholder="First Name"
+                />
+                <input
+                  onBlur={handleOnBlur}
+                  name="lastName"
+                  type="text"
+                  placeholder="Last Name"
+                />
+                <input
+                  onBlur={handleOnBlur}
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                />
+                <input
+                  onBlur={handleOnBlur}
+                  name="password1"
+                  type="password"
+                  placeholder="Password"
+                />
+                <input
+                  onBlur={handleOnBlur}
+                  name="password2"
+                  type="password"
+                  placeholder="Confirm Password"
+                />
+                <div>
+                  <Button type="submit" title={"Create an account"}></Button>
+                </div>
+              </form>
+              <p>
+                Already have an account? <Link to="/login">Login</Link>{" "}
+              </p>
+            </div>
+            <div className="google_facebook">
+              <button>
+                <img src={facebook} alt="" />
+                Continue with Facebook
+              </button>
+              <button>
+                {" "}
+                <img src={google} alt="" /> Continue with Google
+              </button>
+            </div>
           </div>
-          <div className="google_facebook">
-            <button>
-              <img src={facebook} alt="" />
-              Continue with Facebook
-            </button>
-            <button>
-              {" "}
-              <img src={google} alt="" /> Continue with Google
-            </button>
+        )}
+        {isLoading && (
+          <div>
+            <Spinner />
           </div>
-        </div>
+        )}
       </div>
     </RegisterStyled>
   );
