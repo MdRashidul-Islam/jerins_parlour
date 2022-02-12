@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../Shared/Button/Button";
 import Navigation from "../../Shared/Navigation/Navigation";
@@ -12,6 +12,7 @@ const Register = () => {
   const { registerUser, isLoading } = useAuth();
   const [loginData, setLoginData] = useState({});
 
+  const navigate = useNavigate();
   const handleOnBlur = (e) => {
     const field = e.target.name;
     const value = e.target.value;
@@ -19,13 +20,14 @@ const Register = () => {
     newLoginData[field] = value;
     setLoginData(newLoginData);
   };
+  const name = loginData.firstName + " " + loginData.lastName;
 
   const handleRegister = (e) => {
     if (loginData.password1 !== loginData.password2) {
       alert("Password not match");
       return;
     }
-    registerUser(loginData.email, loginData.password1);
+    registerUser(name, loginData.email, loginData.password1, navigate);
     e.preventDefault();
   };
   return (

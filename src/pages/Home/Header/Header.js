@@ -17,12 +17,13 @@ const Header = () => {
               Beauty Salon <br /> For Every Women
             </h1>
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptate, quam.Lorem, ipsum dolor sit amet consectetur
-              adipisicing elit. Voluptate, quam.Lorem, ipsum dolor sit amet
-              consectetur adipisicing elit. Voluptate, quam.
+              A facial is a beautifying skin treatment that cleanses pores,
+              exfoliates dead skin cells, hydrates and moisturises the skin, and
+              treats common skin concerns with a custom regime. Facials are
+              designed to boost the immediate appearance and overall health and
+              longevity of the skin.
             </p>
-            <Link to="">
+            <Link to="/services">
               <Button
                 className="appointment_button"
                 title={"Get an Appointment"}
@@ -41,13 +42,26 @@ const Header = () => {
 const HeaderStyled = styled.header`
   background-color: #fff8f5;
   min-height: 100vh;
+
   .header {
-    height: 500px;
+    min-height: 500px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 135px;
     .header_info {
+      h1 {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 48px;
+        line-height: 60px;
+      }
+      p {
+        color: #666666;
+        text-align: justify;
+        margin-right: 10px;
+      }
       a {
         Button {
           margin-top: 20px;
@@ -65,13 +79,25 @@ const HeaderStyled = styled.header`
   //responsive
   @media (max-width: 688px) {
     .header {
-      min-height: 100vh;
+      height: 720px;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       padding: 0px 10px;
       .header_info {
+        h1 {
+          font-family: Poppins;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 38px;
+          line-height: 40px;
+          padding: 20px 0;
+        }
+        p {
+          text-align: justify;
+          margin-right: 0px;
+        }
         a {
           Button {
             margin-top: 20px;

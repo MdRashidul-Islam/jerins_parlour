@@ -7,52 +7,130 @@ import {
   onAuthStateChanged,
   signOut,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  updateProfile,
+  getIdToken,
 } from "firebase/auth";
+import Toast from "sweetalert2";
+import Swal from "sweetalert2";
 
 initAuth();
 const useFirebase = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState({});
-
+  const [admin, setAdmin] = useState(false);
+  const [token, setToken] = useState("");
+  const provider = new GoogleAuthProvider();
   const auth = getAuth();
 
   //----------------register user start------------------//
-  const registerUser = (email, password) => {
+  const registerUser = (name, email, password, navigate) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Register successfully",
+          showConfirmButton: false,
+          timer: 800,
+        });
+
+        const newUser = { email, displayName: name };
+        setUser(newUser);
+
+        saveUser(email, name, "POST");
+
+        updateProfile(auth.currentUser, {
+          displayName: name,
+        }).catch((error) => {
+          const errorMessage = error.message;
+        });
+
+        navigate("/");
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        Swal.fire({
+          icon: "error",
+          title: `${error.message}`,
+          showConfirmButton: false,
+          timer: 700,
+        });
       })
       .finally(() => setIsLoading(false));
   };
   //---------register User end-----------------//
 
   //-------------login with email password start--------------//
-  const signWithEmail = (email, password) => {
+  const signWithEmail = (email, password, location, navigate) => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((res) => {
         const user = res.user;
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Login successfully",
+          showConfirmButton: false,
+          timer: 800,
+        });
         setUser(user);
+        const destination = location?.state?.from || "/";
+        navigate(destination);
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        Swal.fire({
+          icon: "error",
+          title: `${error.message}`,
+          showConfirmButton: false,
+          timer: 700,
+        });
       })
       .finally(() => setIsLoading(false));
   };
   //-------------login with email password end--------------//
 
+  //------------------sign in with google start---------------------//
+  const googleSignIn = (location, navigate) => {
+    setIsLoading(true);
+    signInWithPopup(auth, provider).then((res) => {
+      const user = res.user;
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Google Login successfully",
+        showConfirmButton: false,
+        timer: 800,
+      });
+      saveUser(user.email, user.displayName, "PUT");
+      const destination = location?.state?.from || "/";
+      navigate(destination);
+    });
+  };
+  //------------------sign in with google end---------------------//
+
   //-----------------sign out start------------------//
   const logOut = () => {
     signOut(auth)
-      .then(() => {})
-      .catch((error) => {})
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: `Logout Successfully`,
+          showConfirmButton: false,
+          timer: 800,
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: `${error.message}`,
+          showConfirmButton: false,
+          timer: 800,
+        });
+      })
       .finally(() => setIsLoading(false));
   };
   //-----------------sign out end------------------//
@@ -61,23 +139,46 @@ const useFirebase = () => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        const uid = user.uid;
         setUser(user);
+        getIdToken(user).then((idToken) => {
+          setToken(idToken);
+        });
       } else {
         setUser({});
       }
       setIsLoading(false);
     });
     return () => unSubscribe;
-  }, []);
+  }, [auth]);
   //---------------Auth state start---------------//
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => setAdmin(data.admin));
+  }, [user.email]);
+
+  // save user state
+  const saveUser = (email, displayName, method) => {
+    const user = { email, displayName };
+    fetch("http://localhost:5000/users", {
+      method: method,
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).then();
+  };
 
   return {
     isLoading,
     user,
+    token,
+    admin,
     registerUser,
     logOut,
     signWithEmail,
+    googleSignIn,
   };
 };
 export default useFirebase;

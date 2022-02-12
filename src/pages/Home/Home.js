@@ -7,7 +7,6 @@ import DisplayService from "./Service/DisplayService";
 import ScreenProfessionally from "./ShowScreenProfessionally/ScreenProfessionally";
 import Testimonial from "./Testimonial/Testimonial";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Test from "./Test";
 
 const Home = () => {
   const theme = createTheme({
@@ -25,7 +24,6 @@ const Home = () => {
     <div>
       <Header />
       <DisplayService />
-      {/* <Test /> */}
 
       <ScreenProfessionally />
 

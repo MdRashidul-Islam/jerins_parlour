@@ -20,11 +20,12 @@ const Navigation = () => {
         <input type="checkbox" id="toggle-menu" />
         <div className="nav_item">
           <Link to="/home">Home</Link>
-          <Link to="">Contact Us</Link>
+
           <Link to="/dashboard">Dashboard</Link>
-          {user.email ? (
+
+          {user?.email ? (
             <Link to="/" style={{ padding: "0px", color: "#F63E7B" }}>
-              {user.email}
+              {user?.displayName}
             </Link>
           ) : (
             <Link to="/">
@@ -33,6 +34,7 @@ const Navigation = () => {
               </small>
             </Link>
           )}
+
           {user?.email ? (
             <Link onClick={logOut} to="/">
               <Button title={`Log out`}></Button>

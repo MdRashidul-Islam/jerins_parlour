@@ -12,7 +12,7 @@ const Spinner = () => {
   let [color, setColor] = useState("#F63E7B");
   return (
     <div>
-      <HashLoader color={color} css={override} size={150} />
+      <HashLoader color={color} css={override} size={100} />
     </div>
   );
 };

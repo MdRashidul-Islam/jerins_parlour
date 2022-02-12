@@ -2,18 +2,29 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../Shared/Button/Button";
+import Rating from "@mui/material/Rating";
 
 const Service = ({ service }) => {
-  const { _id, img, title, price, description } = service;
-  console.log(service);
+  const { _id, img, title, price, description, rating } = service;
+
   return (
     <ServiceStyled>
       <div className="service_card">
         <div className="item">
           <img src={img} alt="" />
-          <h5>{title}</h5>
+          <h5>{title.slice(0, 25)}</h5>
           <h6>${price}</h6>
-          <p>{description}</p>
+          <p>{description.slice(0, 80)}</p>
+          <div className="rating">
+            <Rating
+              className="rating"
+              sx={{ color: "#F43E7A" }}
+              name="size-small"
+              size="small"
+              value={5}
+              readOnly
+            />
+          </div>
           <Link to={`/serviceDetails/${_id}`}>
             <div className="button">
               <Button title={"Book Now"}></Button>
@@ -43,11 +54,13 @@ const ServiceStyled = styled.div`
     }
 
     .item {
+      padding: 10px;
       img {
         width: 80px;
         height: 80px;
         display: block;
         margin: 0 auto;
+        border-radius: 50%;
       }
       h5 {
         font-size: 20px;
@@ -76,6 +89,10 @@ const ServiceStyled = styled.div`
         text-align: center;
         color: #a6a6a6;
         margin-top: 10px;
+      }
+      .rating {
+        text-align: center;
+        margin-top: 5px;
       }
       .button {
         text-align: center;

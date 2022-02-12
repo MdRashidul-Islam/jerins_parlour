@@ -1,11 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import styled from "styled-components";
-import user from "../../../assets/Image/Ellipse 90.png";
-import user1 from "../../../assets/Image/Ellipse 91.png";
-import user2 from "../../../assets/Image/Ellipse 92.png";
-import rating from "../../../assets/Icon/Group 33040.png";
+
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -13,148 +10,82 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Pagination } from "swiper";
+import { Rating } from "@mui/material";
+import Spinner from "../../../styles/Spinner";
 
 export default function Testimonial() {
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/reviews")
+      .then((res) => res.json())
+      .then((data) => setReviews(data));
+  }, []);
+
   return (
     <>
       <h1 style={{ textAlign: "center", marginTop: "20px" }}>Testimonial</h1>
 
-      <TestimonialStyled>
-        <Swiper
-          slidesPerView={1}
-          spaceBetween={30}
-          loop={false}
-          loopFillGroupWithBlank={true}
-          pagination={{
-            clickable: true,
-          }}
-          breakpoints={{
-            640: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 1,
-              spaceBetween: 40,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 50,
-            },
-          }}
-          modules={[Pagination]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <div className="card">
-              <div className="card_header">
-                <div className="image">
-                  <img src={user} alt="" />
+      {reviews.length === 0 ? (
+        <Spinner />
+      ) : (
+        <TestimonialStyled>
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={30}
+            loop={false}
+            loopFillGroupWithBlank={true}
+            pagination={{
+              clickable: true,
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 1,
+                spaceBetween: 40,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 50,
+              },
+            }}
+            modules={[Pagination]}
+            className="mySwiper"
+          >
+            {reviews.map((review) => (
+              <SwiperSlide key={review._id}>
+                <div className="card">
+                  <div className="card_header">
+                    <div className="image">
+                      <img
+                        src={`data:image/png;base64,${review?.image}`}
+                        alt=""
+                      />
+                    </div>
+                    <div className="name_work">
+                      <h5>{review?.name}</h5>
+                      <h4>{review?.occupation}</h4>
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="card_info">{review?.message}</div>
+                  <div className="card_rating">
+                    <Rating
+                      name="size-small"
+                      defaultValue={parseInt(review?.rating)}
+                      size="small"
+                      readOnly
+                    />
+                  </div>
                 </div>
-                <div className="name_work">
-                  <h5>Rashidul Islam</h5>
-                  <h4>Web developer</h4>
-                </div>
-              </div>
-              <div className="card_info">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit,
-                  vero. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Odit, vero. Lorem ipsum dolor sit amet consectetur adipisicing
-                  elit. Odit, vero.
-                </p>
-              </div>
-              <div className="card_rating">
-                <img src={rating} alt="" />
-                <img src={rating} alt="" />
-                <img src={rating} alt="" />
-                <img src={rating} alt="" />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card">
-              <div className="card_header">
-                <div className="image">
-                  <img src={user1} alt="" />
-                </div>
-                <div className="name_work">
-                  <h3>Rashidul Islam</h3>
-                  <h4>Web developer</h4>
-                </div>
-              </div>
-              <div className="card_info">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit,
-                  vero. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Odit, vero. Lorem ipsum dolor sit amet consectetur adipisicing
-                  elit. Odit, vero.
-                </p>
-              </div>
-              <div className="card_rating">
-                <img src={rating} alt="" />
-                <img src={rating} alt="" />
-                <img src={rating} alt="" />
-                <img src={rating} alt="" />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card">
-              <div className="card_header">
-                <div className="image">
-                  <img src={user2} alt="" />
-                </div>
-                <div className="name_work">
-                  <h3>Rashidul Islam</h3>
-                  <h4>Web developer</h4>
-                </div>
-              </div>
-              <div className="card_info">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit,
-                  vero. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Odit, vero. Lorem ipsum dolor sit amet consectetur adipisicing
-                  elit. Odit, vero.
-                </p>
-              </div>
-              <div className="card_rating">
-                <img src={rating} alt="" />
-                <img src={rating} alt="" />
-                <img src={rating} alt="" />
-                <img src={rating} alt="" />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card">
-              <div className="card_header">
-                <div className="image">
-                  <img src={user} alt="" />
-                </div>
-                <div className="name_work">
-                  <h3>Rashidul Islam</h3>
-                  <h4>Web developer</h4>
-                </div>
-              </div>
-              <div className="card_info">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit,
-                  vero. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Odit, vero. Lorem ipsum dolor sit amet consectetur adipisicing
-                  elit. Odit, vero.
-                </p>
-              </div>
-              <div className="card_rating">
-                <img src={rating} alt="" />
-                <img src={rating} alt="" />
-                <img src={rating} alt="" />
-                <img src={rating} alt="" />
-              </div>
-            </div>
-          </SwiperSlide>
-        </Swiper>
-      </TestimonialStyled>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </TestimonialStyled>
+      )}
     </>
   );
 }
@@ -165,14 +96,14 @@ const TestimonialStyled = styled.div`
   justify-content: center;
   align-items: center;
   @media (max-width: 688px) {
-    height: 40vh;
+    min-height: 40vh;
     padding: 200px 10px;
   }
   .mySwiper {
     .card {
       border: 1px solid lightgray;
       border-radius: 5px;
-      height: 100%;
+      height: 350px;
       width: 320px;
       margin-left: 50px;
       padding: 20px;
@@ -186,19 +117,20 @@ const TestimonialStyled = styled.div`
         justify-content: space-around;
         align-items: center;
         img {
-          width: 50px;
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
         }
       }
       .card_info {
-        p {
-          text-align: justify;
-        }
+        height: 220px;
+        font-size: 16px;
+        padding: 10px;
+        text-align: justify;
+        overflow-y: scroll;
       }
       .card_rating {
-        margin-top: 20px;
-        img {
-          width: 20px;
-        }
+        margin-top: 10px;
       }
     }
   }

@@ -6,21 +6,49 @@ import useAuth from "../../../hooks/useAuth";
 import Button from "../../Shared/Button/Button";
 import logo from "../../../assets/Group 33092.png";
 import Spinner from "../../../styles/Spinner";
+import Toast from "sweetalert2";
+import Rating from "@mui/material/Rating";
 
 const ServiceDetails = () => {
   const { user, isLoading } = useAuth();
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+
   const { _id } = useParams();
   const [service, setService] = useState({});
 
   const currentDate = new Date().toLocaleDateString();
-  console.log(currentDate);
+
   useEffect(() => {
     fetch(`http://localhost:5000/services/${_id}`)
       .then((res) => res.json())
       .then((data) => setService(data));
   }, [_id]);
+
+  const onSubmit = (data) => {
+    data.title = service.title;
+    data.price = service.price;
+    data.img = service.img;
+    data.status = "Panding";
+    fetch("http://localhost:5000/bookedService", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.insertedId) {
+          Toast.fire({
+            icon: "success",
+            title: "Booked successfully",
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+          });
+        }
+      });
+  };
 
   return (
     <ServiceDetailsStyled>
@@ -39,11 +67,20 @@ const ServiceDetails = () => {
               <div className="info">
                 <h4>Service: {service.title}</h4>
                 <h4>Price: {service.price}</h4>
-                <h4>Rating: {service.price}</h4>
+                <h4>
+                  <Rating
+                    className="rating"
+                    sx={{ color: "#F43E7A" }}
+                    name="size-small"
+                    size="small"
+                    value={5}
+                    readOnly
+                  />
+                </h4>
               </div>
             </div>
             <div className="bottom">
-              <h3>description</h3>
+              <h3>Description</h3>
               <div className="scroll">
                 <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.

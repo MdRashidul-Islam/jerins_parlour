@@ -23,12 +23,15 @@ import {
 import { Link, Outlet } from "react-router-dom";
 import logo from "../../assets/Group 33092.png";
 import styled from "styled-components";
+import useAuth from "../../hooks/useAuth";
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const { user, admin } = useAuth();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -44,57 +47,71 @@ function Dashboard(props) {
         </Link>
 
         {/* all link */}
-        <Link to="book">
-          <div className="nav_item">
-            <FontAwesomeIcon className="icon" icon={faShoppingCart} />
-            <Link to="book">Book</Link>
-          </div>
-        </Link>
 
-        <Link to="bookingList">
-          <div className="nav_item">
-            <FontAwesomeIcon className="icon" icon={faShoppingBasket} />
-            <Link to="bookingList">Booking List</Link>
-          </div>
-        </Link>
+        {/* {!admin && (
+          <Link to="payment">
+            <div className="nav_item">
+              <FontAwesomeIcon className="icon" icon={faShoppingCart} />
+              <button>Payment</button>
+            </div>
+          </Link>
+        )} */}
 
-        <Link to="review">
-          <div className="nav_item">
-            <FontAwesomeIcon className="icon" icon={faCommentDots} />
-            <Link to="review">Review</Link>
-          </div>
-        </Link>
+        {!admin && (
+          <Link to="bookingList">
+            <div className="nav_item">
+              <FontAwesomeIcon className="icon" icon={faShoppingBasket} />
+              <button>Booking List</button>
+            </div>
+          </Link>
+        )}
+
+        {!admin && (
+          <Link to="review">
+            <div className="nav_item">
+              <FontAwesomeIcon className="icon" icon={faCommentDots} />
+              <button>Add Review</button>
+            </div>
+          </Link>
+        )}
 
         {/* Admin Route */}
 
-        <Link to="orderList">
-          <div className="nav_item">
-            <FontAwesomeIcon className="icon" icon={faListOl} />
-            <Link to="orderList">Order List</Link>
-          </div>
-        </Link>
+        {admin && (
+          <Link to="addService">
+            <div className="nav_item">
+              <FontAwesomeIcon className="icon" icon={faPlus} />
+              <button>Add Service</button>
+            </div>
+          </Link>
+        )}
 
-        <Link to="addService">
-          <div className="nav_item">
-            <FontAwesomeIcon className="icon" icon={faPlus} />
-            <Link to="addService">Add Service</Link>
-          </div>
-        </Link>
+        {admin && (
+          <Link to="makeAdmin">
+            <div className="nav_item">
+              <FontAwesomeIcon className="icon" icon={faUserShield} />
+              <button>Make Admin</button>
+            </div>
+          </Link>
+        )}
 
-        <Link to="makeAdmin">
-          {" "}
-          <div className="nav_item">
-            <FontAwesomeIcon className="icon" icon={faUserShield} />
-            <Link to="makeAdmin">Make Admin</Link>
-          </div>
-        </Link>
+        {admin && (
+          <Link to="manageOrder">
+            <div className="nav_item">
+              <FontAwesomeIcon className="icon" icon={faListOl} />
+              <button>Manage Order</button>
+            </div>
+          </Link>
+        )}
 
-        <Link to="manageService">
-          <div className="nav_item">
-            <FontAwesomeIcon className="icon" icon={faTasks} />
-            <Link to="manageService">Manage Service</Link>
-          </div>
-        </Link>
+        {admin && (
+          <Link to="manageService">
+            <div className="nav_item">
+              <FontAwesomeIcon className="icon" icon={faTasks} />
+              <button>Manage Service</button>
+            </div>
+          </Link>
+        )}
       </div>
     </NavStyled>
   );
@@ -126,8 +143,9 @@ function Dashboard(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Book
+          <Typography noWrap component="div" sx={{ color: "#f63e7b" }}>
+            {user.displayName} <br />
+            {user.email}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -222,9 +240,13 @@ const NavStyled = styled.div`
       @media (max-width: 688px) {
         padding-left: 50px;
       }
-      a {
+      button {
         color: #878787;
         margin-left: 20px;
+        background: none;
+        border: none;
+        font-size: 16px;
+        font-family: "Poppins";
       }
       .icon {
         color: #f76c9a;

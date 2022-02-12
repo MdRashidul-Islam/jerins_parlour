@@ -29,6 +29,10 @@ export const GlobalStyled = createGlobalStyle`
 body{
   font-family: 'Poppins', sans-serif;
 
+  p{
+    
+  }
+
   input{
     padding:5px;
   }

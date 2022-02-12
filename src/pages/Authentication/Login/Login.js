@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../Shared/Button/Button";
 import Navigation from "../../Shared/Navigation/Navigation";
 import google from "../../../assets/Icon/Group 573.png";
 import facebook from "../../../assets/Icon/facebook.png";
 import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const { signWithEmail } = useAuth();
+  const { signWithEmail, googleSignIn } = useAuth();
 
   const [loginData, setLoginData] = useState({});
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleOnBlur = (e) => {
     const field = e.target.name;
@@ -18,11 +22,14 @@ const Login = () => {
     const newLoginData = { ...loginData };
     newLoginData[field] = value;
     setLoginData(newLoginData);
-    console.log(field, value);
+  };
+
+  const handleGoogle = () => {
+    googleSignIn(location, navigate);
   };
 
   const handleLoginSubmit = (e) => {
-    signWithEmail(loginData.email, loginData.password);
+    signWithEmail(loginData.email, loginData.password, location, navigate);
 
     e.preventDefault();
   };
@@ -66,7 +73,7 @@ const Login = () => {
                 <img src={facebook} alt="" />
                 Continue with Facebook
               </button>
-              <button>
+              <button onClick={handleGoogle}>
                 {" "}
                 <img src={google} alt="" /> Continue with Google
               </button>

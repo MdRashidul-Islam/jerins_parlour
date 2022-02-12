@@ -46,7 +46,6 @@ const ServicesStyled = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    flex-flow: wrap;
   }
 `;
 
