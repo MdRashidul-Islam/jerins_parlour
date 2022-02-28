@@ -20,7 +20,7 @@ const Payment = () => {
   const [services, setServices] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/bookingService/${_id}`)
+    fetch(`https://boiling-shelf-38598.herokuapp.com/bookingService/${_id}`)
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, [_id]);

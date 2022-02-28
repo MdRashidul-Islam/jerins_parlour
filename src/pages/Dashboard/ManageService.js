@@ -17,7 +17,7 @@ const ManageService = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/services`)
+    fetch(`https://boiling-shelf-38598.herokuapp.com/services`)
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
@@ -33,7 +33,7 @@ const ManageService = () => {
       confirmButtonText: "DELETE",
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `http://localhost:5000/services/${id}`;
+        const url = `https://boiling-shelf-38598.herokuapp.com/services/${id}`;
         fetch(url, {
           method: "DELETE",
         })

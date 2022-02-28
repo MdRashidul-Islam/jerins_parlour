@@ -27,7 +27,7 @@ const Review = () => {
     formData.append("image", image);
     formData.append("value", value);
 
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://boiling-shelf-38598.herokuapp.com/reviews", {
       method: "POST",
       body: formData,
     })

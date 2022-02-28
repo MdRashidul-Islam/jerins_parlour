@@ -153,7 +153,7 @@ const useFirebase = () => {
   //---------------Auth state start---------------//
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user.email}`)
+    fetch(`https://boiling-shelf-38598.herokuapp.com/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
   }, [user.email]);
@@ -161,7 +161,7 @@ const useFirebase = () => {
   // save user state
   const saveUser = (email, displayName, method) => {
     const user = { email, displayName };
-    fetch("http://localhost:5000/users", {
+    fetch("https://boiling-shelf-38598.herokuapp.com/users", {
       method: method,
       headers: {
         "content-type": "application/json",

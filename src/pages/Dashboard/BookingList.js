@@ -10,11 +10,14 @@ const BookingList = () => {
   const [bookedServices, setBookedServices] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/bookedService/${user?.email}`, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    })
+    fetch(
+      `https://boiling-shelf-38598.herokuapp.com/bookedService/${user?.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => setBookedServices(data));
   }, [user?.email, token]);
@@ -31,7 +34,7 @@ const BookingList = () => {
       confirmButtonText: "DELETE",
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `http://localhost:5000/bookedService/${id}`;
+        const url = `https://boiling-shelf-38598.herokuapp.com/bookedService/${id}`;
         fetch(url, {
           method: "DELETE",
         })

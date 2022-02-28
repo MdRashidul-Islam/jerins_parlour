@@ -19,7 +19,7 @@ const OrderList = () => {
   const [reload, setReload] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/bookedService")
+    fetch("https://boiling-shelf-38598.herokuapp.com/bookedService")
       .then((res) => res.json())
       .then((data) => setBookedServices(data));
   }, [reload]);
@@ -35,7 +35,7 @@ const OrderList = () => {
       confirmButtonText: "DELETE",
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `http://localhost:5000/bookedService/${id}`;
+        const url = `https://boiling-shelf-38598.herokuapp.com/bookedService/${id}`;
         fetch(url, {
           method: "DELETE",
         })
@@ -68,7 +68,7 @@ const OrderList = () => {
       confirmButtonText: "DELETE",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/bookedService/${id}`, {
+        fetch(`https://boiling-shelf-38598.herokuapp.com/bookedService/${id}`, {
           method: "PUT",
         })
           .then((res) => res.json())

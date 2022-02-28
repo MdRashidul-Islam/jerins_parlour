@@ -19,7 +19,7 @@ const ServiceDetails = () => {
   const currentDate = new Date().toLocaleDateString();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/services/${_id}`)
+    fetch(`https://boiling-shelf-38598.herokuapp.com/services/${_id}`)
       .then((res) => res.json())
       .then((data) => setService(data));
   }, [_id]);
@@ -29,7 +29,7 @@ const ServiceDetails = () => {
     data.price = service.price;
     data.img = service.img;
     data.status = "Panding";
-    fetch("http://localhost:5000/bookedService", {
+    fetch("https://boiling-shelf-38598.herokuapp.com/bookedService", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
