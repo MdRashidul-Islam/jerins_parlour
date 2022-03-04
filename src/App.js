@@ -1,21 +1,21 @@
 import { Route, Routes } from "react-router-dom";
+import AuthProvider from "./contexts/AuthProvider/AuthProvider";
+import AdminRoute from "./pages/Authentication/AdminRoute/AdminRoute";
 import Login from "./pages/Authentication/Login/Login";
+import PrivateRoute from "./pages/Authentication/PrivateRoute/PrivateRoute";
 import Register from "./pages/Authentication/Register/Register";
 import AddService from "./pages/Dashboard/AddService";
-import Payment from "./pages/Dashboard/Payment";
 import BookingList from "./pages/Dashboard/BookingList";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import MakeAdmin from "./pages/Dashboard/MakeAdmin";
-import ManageService from "./pages/Dashboard/ManageService";
 import ManageOrder from "./pages/Dashboard/ManageOrder";
+import ManageService from "./pages/Dashboard/ManageService";
+import Payment from "./pages/Dashboard/Payment";
 import Review from "./pages/Dashboard/Review";
-import Services from "./pages/Home/Service/Services";
-import Home from "./pages/Home/Home";
-import AuthProvider from "./contexts/AuthProvider/AuthProvider";
-import ServiceDetails from "./pages/Home/Service/ServiceDetails";
-import PrivateRoute from "./pages/Authentication/PrivateRoute/PrivateRoute";
-import AdminRoute from "./pages/Authentication/AdminRoute/AdminRoute";
 import WelcomePage from "./pages/Dashboard/WelcomePage";
+import Home from "./pages/Home/Home";
+import ServiceDetails from "./pages/Home/Service/ServiceDetails";
+import Services from "./pages/Home/Service/Services";
 
 function App() {
   return (
@@ -35,7 +35,15 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           {/* dashboard */}
-          <Route path="dashboard" element={<Dashboard />}>
+
+          <Route
+            path="dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          >
             <Route index element={<WelcomePage />} />
             <Route
               path="addService"

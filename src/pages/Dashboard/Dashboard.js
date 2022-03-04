@@ -16,7 +16,6 @@ import {
   faListOl,
   faPlus,
   faShoppingBasket,
-  faShoppingCart,
   faTasks,
   faUserShield,
 } from "@fortawesome/free-solid-svg-icons";

@@ -77,8 +77,9 @@ const HeaderStyled = styled.header`
     }
   }
   //responsive
-  @media (max-width: 688px) {
+  @media (max-width: 700px) {
     .header {
+      margin-top: 20px;
       height: 720px;
       display: flex;
       justify-content: center;

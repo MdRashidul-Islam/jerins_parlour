@@ -99,7 +99,7 @@ const ManageService = () => {
                 {product?.email}
               </TableCell> */}
               <TableCell align="center">
-                <img src={service?.img} width="40px" alt="" />
+                {/* <img src={service?.img} width="40px" alt="" /> */}
               </TableCell>
               <TableCell sx={{ color: "#666666" }} align="center">
                 {service?._id}

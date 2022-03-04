@@ -66,8 +66,9 @@ const NavigationStyled = styled.nav`
 
     @media (max-width: 688px) {
       height: 70px;
-      margin: 0 10px;
-      z-index: 0px;
+      margin: 0 0px;
+
+      z-index: 100;
     }
 
     .nav_logo {
@@ -77,6 +78,10 @@ const NavigationStyled = styled.nav`
         height: 48px;
         object-fit: contain;
       }
+      @media (max-width: 688px) {
+        margin-top: 10px;
+        margin-left: 10px;
+      }
     }
     #toggle-menu {
       display: none;
@@ -84,7 +89,8 @@ const NavigationStyled = styled.nav`
     .toggle {
       color: #f63e7b;
       display: none;
-      margin-right: 10px;
+      margin-right: 20px;
+      font-size: 30px;
     }
     #toggle-menu:checked ~ .nav_item {
       transform: translateY(0px);
@@ -115,16 +121,17 @@ const NavigationStyled = styled.nav`
         position: absolute;
         background: rgb(128, 128, 128);
         width: 100%;
-        height: 220px;
-        margin-top: 260px;
+        height: 260px;
+        margin-top: 190px;
         left: 0;
         transform: translateY(-500px);
         transition: 0.3s linear;
-        padding-top: 30px;
+        padding-top: 60px;
+        z-index: -1;
         a {
           display: block;
           text-align: center;
-          padding: 14px 0;
+          margin-top: 22px;
           font-size: 18px;
           color: white;
           margin-left: 0px;
